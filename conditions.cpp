@@ -34,5 +34,8 @@ int main() {
         case 100:
             cout << endl << "Remark : Excellent!";
             break;
+        default:
+            cout << endl << "Remark : Pass";
     }
+    return 0;
 }
