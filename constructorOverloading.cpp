@@ -14,12 +14,6 @@ public:
     void getName() {
         cout << "Name: " << name << endl;
     }
-
-    void getName(string gender) {                    //overloaded function
-        cout << "Name: " << name << endl;
-        cout << "Gender: " << gender << endl;
-
-    }
 };
 
 int main() {
@@ -28,6 +22,5 @@ int main() {
 
     p1.getName();
     p2.getName();
-    p2.getName("Male");             //function overloading
 
 }
