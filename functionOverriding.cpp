@@ -33,6 +33,6 @@ int main() {
     a.makeSound();
     d.makeSound();
     c.makeSound();
-
-
+	
+	return 0;
 }
