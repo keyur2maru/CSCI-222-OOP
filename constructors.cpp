@@ -37,6 +37,10 @@ public:
     }
 };
 
+~Employee() {
+    cout << "Destructor called" << endl;
+}
+
 int main() {
     Employee employee_obj, employee_obj2("Keyur", "Developer", 80, 40), employee_obj3(employee_obj2);
     cout << "Default Constructor" << endl;
@@ -45,4 +49,5 @@ int main() {
     employee_obj2.getData();            //getData() using parameterized constructor
     cout << "Copy Constructor" << endl;
     employee_obj3.getData();            //getData() using copy constructor
+    ~employee_obj2();
 }
