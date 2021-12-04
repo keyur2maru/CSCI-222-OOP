@@ -5,9 +5,10 @@ using namespace std;
 
 class Manager {
 private:
-    string name;
     int rate, hours;
 public:
+    string name;
+
     Manager() {
     name = "NULL";
     rate = 0;
@@ -18,8 +19,9 @@ public:
         this -> rate = rate;
         this -> hours = hours;
     }
-    void setName(string name) {
-        this -> name = name;
+
+    virtual void setName(string name) {
+        name = "NULL";
     }
     string getName() {
         return name;
@@ -54,12 +56,12 @@ public:
 
 class Employee : public Manager {
 private:
-    string name, title;
+    string title;
     Manager *ptr;                                                                               // pointer to manager class
 public:
     Employee() {                                                                                // Default or Non-parameterized Constructor
         ptr = new Manager();
-        name = "Null";
+        setName("NULL");
         title = "Null";
       //setRate(0);
         ptr -> setRate(0);
@@ -69,20 +71,24 @@ public:
 
     Employee(string name, string title, int rate, int hours) {                                  // Parameterized Constructor
         ptr = new Manager();
-        this -> name = name;
+        setName(name);
         this -> title = title;
         ptr -> setRate(rate);
         ptr -> setHours(hours);
     }
+    void setName(string name) {
+        this -> name = name;
+    }
 
-    void setRate(int rate_a) {
-        ptr -> setRate(rate_a);
+    void setRate(int rate) {
+        setRate(rate);
     }
     int getRate() {
         return ptr -> getRate();
+        delete ptr;
     }
-    void setHours(int hours_a) {
-        ptr -> setHours(hours_a);
+    void setHours(int hours) {
+        ptr -> setHours(hours);
     }
     int getHours() {
         return ptr -> getRate();
@@ -123,9 +129,14 @@ int main() {
     cout << "Parameterized Constructor with base class ptr and base class obj:" << endl;
     manager_obj2 -> getData();
 
+    Manager *test;
+    test = new Employee();
+    test -> setName("Pointers");                                                             //calling derived class setName func because it is setName is virtual at base
+    test -> getData();
     delete employee_obj;                                                                        //free up memory
     delete employee_obj2;
     delete manager_obj1;
     delete manager_obj2;
+    delete test;
 
 }
